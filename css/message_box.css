@@ -1,0 +1,123 @@
+html {
+    font-size: 18px;
+}
+
+.alert-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* background: rgba(219, 211, 211, 0.1); */
+    background-color: rgba(204, 204, 204, 0.4);
+    display: flex;
+    z-index: 9990;
+    /* 取消双击选中文本 */
+    user-select: none;
+    /* transition: all .9s; */
+}
+
+.alert-box {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -11.11rem;
+    margin-top: -5.555rem;
+    height: 11.11rem;
+    width: 22.22rem;
+    border: 1px solid rgba(0, 0, 0, .2);
+    /* margin: auto; */
+    border-radius: 6px;
+    box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+    outline: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    z-index: 9999;
+    background-color: #fff;
+}
+
+@media (max-width: 450px) {
+    html {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 350px) {
+    html {
+        font-size: 12px;
+    }
+}
+
+.add-alert-box {
+    animation: add-alert-box .3s ease;
+}
+
+@keyframes add-alert-box {
+    0% {
+        margin-top: -55.55rem;
+        opacity: .5;
+    }
+    100% {
+        margin-top: -5.55rem;
+        opacity: 1;
+    }
+}
+
+.remove-alert-box {
+    animation: remove-alert-box .3s ease-in;
+}
+
+@keyframes remove-alert-box {
+    0% {
+        margin-top: -5.55rem;
+        opacity: 1;
+    }
+    30% {
+        margin-top: 2.77rem;
+        opacity: 1;
+    }
+    100% {
+        margin-top: -55.55rem;
+        opacity: 5;
+    }
+}
+
+.box-title {
+    display: block;
+    padding: .4rem .8rem;
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #ebebeb;
+    font-weight: 900;
+    font-size: 1rem;
+    color: rgba(0, 0, 0, .7);
+}
+
+.box-content {
+    width: 100%;
+    height: 4.44rem;
+    border-bottom: 1px solid #ebebeb;
+    /* padding: .8rem 0 0 .36rem; */
+    padding-left: .8rem;
+    line-height: 4.44rem;
+    color: rgba(0, 0, 0, .6);
+    box-sizing: border-box
+}
+
+.box-button {
+    color: #fff;
+    background-color: #337AB7;
+    border: 1px solid transparent;
+    padding: .7rem 1.38rem;
+    margin-bottom: 0;
+    font-size: .9rem;
+    font-weight: 400;
+    border-radius: 4px;
+    float: right;
+    margin: .85rem 1.38rem 0 0;
+    cursor: pointer;
+}
+
+.box-button:hover {
+    /* background-color: #265F8F; */
+    background-image: radial-gradient(80px at right bottom, rgb(38, 94, 143), rgba(38, 94, 143, 0.00));
+}
