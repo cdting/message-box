@@ -1,5 +1,7 @@
 html {
     font-size: 18px;
+    /* 取消双击选中文本 */
+    user-select: none;
 }
 
 .alert-layer {
@@ -12,9 +14,6 @@ html {
     background-color: rgba(204, 204, 204, 0.4);
     display: flex;
     z-index: 9990;
-    /* 取消双击选中文本 */
-    user-select: none;
-    /* transition: all .9s; */
 }
 
 .alert-box {
@@ -90,6 +89,7 @@ html {
     font-weight: 900;
     font-size: 1rem;
     color: rgba(0, 0, 0, .7);
+    border-radius: 6px 6px 0 0;
 }
 
 .box-content {
@@ -120,4 +120,97 @@ html {
 .box-button:hover {
     /* background-color: #265F8F; */
     background-image: radial-gradient(80px at right bottom, rgb(38, 94, 143), rgba(38, 94, 143, 0.00));
+}
+
+
+/* ************************************************************************************************************************* */
+
+.right-bottom-main {
+    position: fixed;
+    bottom: .5rem;
+    height: 10rem;
+    width: 20rem;
+    border: 1px solid rgba(0, 0, 0, .2);
+    box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+    border-radius: 10px;
+}
+
+.right-bottom-main-show {
+    right: 0.2rem;
+    animation: show-opacity 1s ease;
+}
+
+@keyframes show-opacity {
+    0% {
+        opacity: .2;
+    }
+    30% {
+        opacity: .5;
+    }
+    70% {
+        opacity: 7;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.right-bottom-main-hide {
+    animation: right-bottom-main-hide .3s ease-in;
+}
+
+@keyframes right-bottom-main-hide {
+    0% {
+        right: 1.2rem;
+    }
+    30% {
+        right: 0.2rem;
+    }
+    100% {
+        right: -30rem;
+    }
+}
+
+.right-bottom-text {
+    border-bottom: 1px solid #ebebeb;
+    font-weight: 800;
+    box-sizing: border-box;
+    display: inline-block;
+    height: 2.5rem;
+    line-height: 2.5rem;
+    background-color: #f7f7f7;
+    border-radius: 10px 10px 0 0;
+    font-size: 1rem;
+    width: 100%;
+    padding-left: 1rem;
+    margin-bottom: 1px;
+    color: rgba(0, 0, 0, .7);
+}
+
+.right-bottom-hide {
+    position: absolute;
+    font-size: 1.6rem;
+    color: rgba(204, 204, 204, 0.8);
+    cursor: pointer;
+    width: 2rem;
+    right: -5px;
+    top: 1px;
+}
+
+.right-bottom-hide:hover {
+    color: rgba(0, 0, 0, .5);
+}
+
+.no-title {
+    margin-top: .5rem;
+}
+
+.main-no-title {
+    height: 3.2rem;
+    width: 26rem;
+}
+
+.right-bottom-centent {
+    height: 8rem;
+    padding: 1rem;
 }
