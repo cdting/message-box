@@ -214,3 +214,45 @@ html {
     height: 8rem;
     padding: 1rem;
 }
+
+
+/* ************************************************************** */
+
+.box-button-cancel {
+    border: 1px solid #ccc;
+    padding: .7rem 1.38rem;
+    margin-bottom: 0;
+    font-size: .9rem;
+    font-weight: 400;
+    border-radius: 4px;
+    float: left;
+    margin: .85rem 0 0 18.85rem;
+    cursor: pointer;
+    color: #333;
+    background-color: #fff;
+}
+
+.box-button-cancel:hover {
+    color: #333;
+    background-color: #e6e6e6;
+    border-color: #adadad;
+}
+
+.alert-box-confirm {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -11.11rem;
+    margin-top: -5.555rem;
+    height: 11.11rem;
+    width: 32.22rem;
+    border: 1px solid rgba(0, 0, 0, .2);
+    /* margin: auto; */
+    border-radius: 6px;
+    box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+    outline: 0;
+    box-sizing: border-box;
+    overflow: hidden;
+    z-index: 9999;
+    background-color: #fff;
+}

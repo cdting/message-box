@@ -45,6 +45,14 @@
                 idEle.attachEvent("on" + bindType, fn);
             }
         },
+        stopEvent: function(event) {
+            var event = this.getEvent(event);
+            if (event.preventDefault) {
+                return event.preventDefault();
+            } else {
+                return event.returnValue = false;
+            }
+        },
         stopBubble: function(event) {
             var event = this.getEvent(event);
             if (event.stopPropagation) {
@@ -53,9 +61,15 @@
                 event.cancelBubble = true;
             }
         },
-        removeEle: function(clickEleID, removeEle, animationStyle, timer) {
+        removeEle: function(clickEleID, removeEle, animationStyle, timer, confirm, cancel) {
             var that = this;
             this.bindEventOfID(clickEleID, "click", function(event) {
+                if (confirm) {
+                    confirm();
+                }
+                if (cancel) {
+                    cancel();
+                }
                 var clickParentClassName = that.idNode(clickEleID).parentNode;
                 var parentClassNameArray = clickParentClassName.className.split(' ');
                 parentClassNameArray.length > 1 ? clickParentClassName.className = parentClassNameArray[0] + " " + animationStyle : parentClassNameArray.className = clickParentClassName;
@@ -116,6 +130,30 @@
         }, showTime * 1000);
 
     };
+    Message.prototype.showConfirm = function(cllickEle, title, msg, confirm, cancel) {
+        var that = this;
+        this.bindEventOfID(cllickEle, "click", function(event) {
+            that.stopEvent(event);
+            //层
+            that.createEle("div", "alert-layer", "alert_layer", "body");
+            //盒子
+            that.createEle("div", "alert-box-confirm add-alert-box", "alert_box", "alert_layer");
+
+            that.createEle("span", "box-title", "box_title", "alert_box", title);
+
+            that.createEle("div", "box-content", "box_content", "alert_box", msg);
+
+            that.createEle("button", "box-button-cancel", "box_button_cancel", "alert_box", "取 消");
+
+            that.createEle("button", "box-button", "box_button", "alert_box", "确 定");
+
+            that.removeEle("box_button", "alert_layer", "remove-alert-box", 300, confirm);
+
+            that.removeEle("box_button_cancel", "alert_layer", "remove-alert-box", 300, cancel);
+
+        });
+    };
+
 
     window.message_box = new Message();
 

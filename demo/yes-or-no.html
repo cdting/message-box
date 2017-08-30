@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/message_box.css">
+    <style>
+        .haha {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <a href="https://www.baidu.com" target="_black" id="baidu">百度</a>
+        <a href="http://www.ifeng.com" target="_black">凤凰网</a>
+        <a href="http://www.cnbeta.cn" target="_black">cnBate</a>
+        <a href="http://www.zhihu.com" target="_black">知乎</a>
+        <a href="http://www.nodejs.org" target="_black">NodeJS</a>
+    </div>
+    <div id="wo"></div>
+</body>
+
+</html>
+<script src="../js/message_box.js"></script>
+<script>
+    window.onload = function() {
+        message_box.showConfirm("baidu", "消息框", "是否跳转百度?", function() {
+            console.log(this);
+            var h = document.getElementById("baidu").getAttribute("href");
+            window.location.href = h;
+        }, function() {
+            console.log(456);
+        });
+
+    }
+</script>
