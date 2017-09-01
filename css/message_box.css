@@ -4,6 +4,13 @@ html {
     user-select: none;
 }
 
+
+/* 取消Chrome选中效果 */
+
+:focus {
+    outline: 0;
+}
+
 .alert-layer {
     position: absolute;
     top: 0;
@@ -117,7 +124,8 @@ html {
     cursor: pointer;
 }
 
-.box-button:hover {
+.box-button:hover,
+.mode-submit:hover {
     /* background-color: #265F8F; */
     background-image: radial-gradient(80px at right bottom, rgb(38, 94, 143), rgba(38, 94, 143, 0.00));
 }
@@ -232,7 +240,8 @@ html {
     background-color: #fff;
 }
 
-.box-button-cancel:hover {
+.box-button-cancel:hover,
+.mode-cancel:hover {
     color: #333;
     background-color: #e6e6e6;
     border-color: #adadad;
@@ -242,12 +251,11 @@ html {
     position: absolute;
     left: 50%;
     top: 50%;
-    margin-left: -11.11rem;
+    margin-left: -16rem;
     margin-top: -5.555rem;
     height: 11.11rem;
     width: 32.22rem;
     border: 1px solid rgba(0, 0, 0, .2);
-    /* margin: auto; */
     border-radius: 6px;
     box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
     outline: 0;
@@ -256,3 +264,72 @@ html {
     z-index: 9999;
     background-color: #fff;
 }
+
+
+/* **************************************************** */
+
+.mode-box {
+    position: absolute;
+    z-index: 9999;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, .1);
+    /* display: flex; */
+}
+
+.mode-content {
+    box-sizing: border-box;
+    margin: 3rem auto;
+    width: 40rem;
+    box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
+    border: 1px solid rgba(0, 0, 0, .2);
+    background-color: #fff;
+    border-radius: 6px;
+}
+
+.mode-title {
+    border-bottom: 1px solid #ebebeb;
+    color: rgba(0, 0, 0, .7);
+    border-radius: 6px 6px 0 0;
+    font-weight: 900;
+    padding: .4rem .8rem;
+    background-color: #f7f7f7;
+}
+
+.mode-bottom {
+    border-top: 1px solid #ddd;
+    width: 13rem;
+    padding: 1rem;
+    padding-left: 26rem;
+}
+
+.mode-bottom button {
+    padding: .7rem 1.38rem;
+    cursor: pointer;
+    font-size: .9rem;
+    font-weight: 400;
+    border-radius: 4px;
+}
+
+.mode-cancel {
+    border: 1px solid #ccc;
+    color: #333;
+    background-color: #fff;
+}
+
+.mode-submit {
+    margin-left: 2rem;
+    color: #fff;
+    background-color: #337AB7;
+    border: 1px solid transparent;
+}
+
+.my-mode {
+    padding: 1rem;
+    display: none;
+}
+
+
+/* *************************************************************************** */

@@ -2,8 +2,9 @@
     'use strict';
 
     function Message() {
-        // this.i = 0;
+
     };
+
 
     Message.prototype = {
         parentDocument: function() {
@@ -70,6 +71,7 @@
                 if (cancel) {
                     cancel();
                 }
+
                 var clickParentClassName = that.idNode(clickEleID).parentNode;
                 var parentClassNameArray = clickParentClassName.className.split(' ');
                 parentClassNameArray.length > 1 ? clickParentClassName.className = parentClassNameArray[0] + " " + animationStyle : parentClassNameArray.className = clickParentClassName;
@@ -87,6 +89,20 @@
             setTimeout(function() {
                 clickParentClassName.parentNode.removeChild(clickParentClassName);
             }, timer);
+        },
+        hideEle: function(clickEle, hideEle, confirm, cancel) {
+            var that = this;
+            this.bindEventOfID(clickEle, "click", function() {
+                if (confirm) {
+                    confirm();
+                };
+                if (cancel) {
+                    cancel()
+                };
+
+                that.idNode(hideEle).setAttribute("style", "display:none");
+
+            })
         }
     };
 
@@ -153,6 +169,31 @@
 
         });
     };
+
+    Message.prototype.showMode = function(modeID, title, confirm, cancel) {
+        var myMode = this.idNode(modeID);
+        if (myMode === null) {
+            console.log('是不是忘加mode节点或id写错了^_^');
+            return;
+        };
+        var model = this.idNode(modeID + "_mode_box");
+        if (model != null) {
+            model.setAttribute("style", "display:block");
+            return;
+        };
+        myMode.setAttribute("style", "display:block;");
+        this.createEle("div", "mode-box", modeID + "_mode_box", "body");
+        this.createEle("div", "mode-content", modeID + "_mode_content", modeID + "_mode_box");
+        this.createEle("div", "mode-title", modeID + "_mode_title", modeID + "_mode_content", title);
+        var modeContent = this.idNode(modeID + "_mode_content");
+        modeContent.appendChild(myMode);
+        this.createEle("div", "mode-bottom", modeID + "_mode_bottom", modeID + "_mode_content");
+        this.createEle("button", "mode-cancel", modeID + "_mode_cancel", modeID + "_mode_bottom", "取 消");
+        this.createEle("button", "mode-submit", modeID + "_mode_submit", modeID + "_mode_bottom", "确 定");
+
+        this.hideEle(modeID + "_mode_submit", modeID + "_mode_box", confirm);
+        this.hideEle(modeID + "_mode_cancel", modeID + "_mode_box", cancel);
+    }
 
 
     window.message_box = new Message();

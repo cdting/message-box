@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/message_box.css">
+    <title>Document</title>
+
+</head>
+
+<body>
+    <button id="mode_id" type="submit">模态框1</button>
+    <button id="mode" type="submit">模态框2</button>
+    <div id="my_mode" class="my-mode">
+        <form action="">
+            <input type="checkbox" name="" value="男">男
+            <input type="checkbox" value="女">女
+
+        </form>
+    </div>
+
+    <div id="mode_my" class="my-mode">
+        <form action="">
+            <input type="checkbox" name="" value="男">哈哈
+            <input type="checkbox" value="女">呵呵
+
+        </form>
+    </div>
+</body>
+
+</html>
+<script src="../js/message_box.js"></script>
+<script>
+    window.onload = function() {
+        document.getElementById("mode_id").addEventListener("click", function() {
+            message_box.showMode("my_mode", "模态框1", function() {
+                console.log('成功-模态1');
+            });
+        })
+
+        document.getElementById("mode").addEventListener("click", function() {
+            message_box.showMode("mode_my", "模态框2", function() {
+                console.log('成功-模态2');
+            }, function() {
+                console.log('失败-模态2');
+            });
+        })
+    }
+</script>
