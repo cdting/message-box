@@ -2,7 +2,7 @@
     'use strict';
 
     function Message() {
-
+        this.timer = null;
     };
 
 
@@ -127,6 +127,7 @@
         var msg = option.msg || "默认值";
         var showTime = option.showTime || 2;
         var bgc = option.bgc || "rgba(0, 0, 0, .1)";
+        var fontColor = option.fc || "";
 
         if (title !== "") {
             this.createEle("div", "right-bottom-main right-bottom-main-show", "right_bottom_main", "body");
@@ -138,7 +139,10 @@
             this.createEle("span", "right-bottom-hide no-title", "right_bottom_hide", "right_bottom_main", "×");
         }
         this.createEle("div", "right-bottom-centent", "right_bottom_centent", "right_bottom_main", msg);
+        if (fontColor !== "" && title === "") {
+            this.idNode("right_bottom_centent").style.color = fontColor;
 
+        }
         this.removeEle("right_bottom_hide", "right_bottom_main", (title === "" ? "main-no-title " : "") + " right-bottom-main-hide", 300);
         var a = this;
         setTimeout(function() {
@@ -193,7 +197,29 @@
 
         this.hideEle(modeID + "_mode_submit", modeID + "_mode_box", confirm);
         this.hideEle(modeID + "_mode_cancel", modeID + "_mode_box", cancel);
-    }
+    };
+    Message.prototype.showLoading = function() {
+        this.createEle("div", "load-box", "load_box", "body");
+        this.createEle("div", "load-content ball-spin-fade-loader", "load_content", "load_box");
+        for (var i = 0; i < 8; i++) {
+            this.createEle("div", "", "", "load_content");
+        };
+        var that = this;
+        this.timer = setTimeout(function() {
+            console.log('请求超时');
+            that.hideLoading();
+            that.showRightBottom({
+                msg: "请求超时",
+                fc: "#fff",
+                bgc: "red"
+            })
+        }, 30000);
+    };
+
+    Message.prototype.hideLoading = function() {
+        this.eleNode("body").removeChild(this.idNode("load_box"));
+        window.clearTimeout(this.timer);
+    };
 
 
     window.message_box = new Message();
